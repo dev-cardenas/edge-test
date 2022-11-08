@@ -1,0 +1,10 @@
+# Dependency directories
+**/node_modules
+**/package-lock.json
+# Build directories
+**/dist
+# .env configuration
+**/*.env
+**/private
+**/tests
+yarn.lock
