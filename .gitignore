@@ -8,3 +8,7 @@
 **/private
 **/tests
 yarn.lock
+
+# test dependencies
+coverage
+dist

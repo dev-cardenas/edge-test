@@ -1,14 +1,13 @@
-import { Router } from 'express';
+import { Router } from "express";
 
 /* * Controllers */
-import ProductController from '../controllers/ProductController';
-import UserController from '../controllers/UserController';
+import ProductController from "../controllers/ProductController";
+import UserController from "../controllers/UserController";
 
 /* * Middlewares */
-import authMiddleware from '../middleware/auth';
+import authMiddleware from "../middleware/auth";
 
 const routes = Router();
-
 
 /**
  * Post track
@@ -58,7 +57,57 @@ const routes = Router();
  *                    type: number
  *                    example: 201
  */
-routes.post('/users', UserController.create)
+routes.post("/users", UserController.create);
+
+/**
+ * Post track
+ * @swagger
+ * /users:
+ *    post:
+ *      tags:
+ *        - users
+ *      summary: "Delete user"
+ *      description: Delete user
+ *      requestBody:
+ *          content:
+ *            application/json:
+ *              schema:
+ *                $ref: "#/components/schemas/user"
+ *      responses:
+ *        201:
+ *          description: returns a message that the user was removed.
+ *          content:
+ *            application/json:
+ *              schema:
+ *                type: "object"
+ *                properties:
+ *                  message:
+ *                    type: string
+ *                    example: "User removed"
+ *                  success:
+ *                    type: boolean
+ *                    example: true
+ *                  status:
+ *                    type: number
+ *                    example: 201
+ *        400:
+ *          description: Bad request.
+ *          content:
+ *            application/json:
+ *              schema:
+ *                type: "object"
+ *                properties:
+ *                  message:
+ *                    type: string
+ *                    example: "Resource not found"
+ *                  success:
+ *                    type: boolean
+ *                    example: false
+ *                  status:
+ *                    type: number
+ *                    example: 201
+ */
+routes.delete("/users", UserController.delete);
 
 /**
  * Post track
@@ -109,8 +158,8 @@ routes.post('/users', UserController.create)
  *                    type: number
  *                    example: 201
  */
-routes.post('/login', UserController.login)
-routes.get('/products/search/:search', ProductController.search)
+routes.post("/login", UserController.login);
+routes.get("/products/search/:search", ProductController.search);
 
 routes.use(authMiddleware);
 /**
@@ -146,8 +195,7 @@ routes.use(authMiddleware);
  *        500:
  *          description: Server error
  */
-routes.get('/products', ProductController.index)
-
+routes.get("/products", ProductController.index);
 
 /**
  * Get track
@@ -203,9 +251,7 @@ routes.get('/products', ProductController.index)
  *        500:
  *          description: Server error
  */
-routes.get('/products/:id', ProductController.show)
-
-
+routes.get("/products/:id", ProductController.show);
 
 /**
  * Post track
@@ -257,7 +303,7 @@ routes.get('/products/:id', ProductController.show)
  *                    type: number
  *                    example: 201
  */
-routes.post('/products', ProductController.create)
+routes.post("/products", ProductController.create);
 
 /**
  * Put track
@@ -309,7 +355,7 @@ routes.post('/products', ProductController.create)
  *                    type: number
  *                    example: 201
  */
-routes.put('/products', ProductController.update)
+routes.put("/products", ProductController.update);
 
 /**
  * Delete track
@@ -361,8 +407,6 @@ routes.put('/products', ProductController.update)
  *                    type: number
  *                    example: 201
  */
-routes.delete('/products', ProductController.delete)
+routes.delete("/products", ProductController.delete);
 
-
-
-export default routes
+export default routes;

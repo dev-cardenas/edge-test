@@ -1,7 +1,5 @@
-import { createUser } from './createUser'
-import { getOneUser } from './getOneUser'
+import { createUser } from "./createUser";
+import { getOneUser } from "./getOneUser";
+import { deleteUser } from "./deleteUser";
 
-export {
-  createUser,
-  getOneUser
-}
+export { createUser, getOneUser, deleteUser };
